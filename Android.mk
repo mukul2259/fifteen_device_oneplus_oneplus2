@@ -2,7 +2,7 @@ ifeq ($(call my-dir),$(call project-path-for,qcom-display))
 
 TARGET_USES_SDE = false
 
-display-hals := libgralloc libcopybit libqservice libqdutils
+display-hals := libgralloc
 
 ifeq ($(TARGET_USES_SDE), true)
     sde-libs := displayengine/libs
