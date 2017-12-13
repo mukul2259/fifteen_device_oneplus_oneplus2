@@ -38,7 +38,6 @@
 #include "hdmi.h"
 #include "hwc_copybit.h"
 #include "hwc_ad.h"
-#include "profiler.h"
 #include "hwc_virtual.h"
 
 using namespace qhwc;
