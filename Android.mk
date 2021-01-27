@@ -1,12 +1,8 @@
 ifeq ($(call my-dir),$(call project-path-for,qcom-display))
 
-ifeq ($(call is-board-platform-in-list, thulium),true)
-    TARGET_USES_SDE = true
-else
-    TARGET_USES_SDE = false
-endif
+TARGET_USES_SDE = false
 
-display-hals := libgralloc libcopybit libmemtrack libqservice libqdutils
+display-hals := libgralloc libcopybit libqservice libqdutils
 
 ifeq ($(TARGET_USES_SDE), true)
     sde-libs := displayengine/libs
