@@ -6,7 +6,7 @@ else
     TARGET_USES_SDE = false
 endif
 
-display-hals := libgralloc libcopybit libmemtrack libqservice libqdutils
+display-hals := libgralloc libcopybit libqservice libqdutils
 
 ifeq ($(TARGET_USES_SDE), true)
     sde-libs := displayengine/libs
