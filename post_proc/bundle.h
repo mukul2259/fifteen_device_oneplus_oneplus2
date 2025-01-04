@@ -27,7 +27,6 @@
 /* Retry for delay for mixer open */
 #define RETRY_NUMBER 10
 #define RETRY_US 500000
-
 #define MIXER_CARD 0
 #define SOUND_CARD 0
 
