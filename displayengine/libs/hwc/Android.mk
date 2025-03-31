@@ -13,7 +13,7 @@ LOCAL_CFLAGS                  := -Wno-missing-field-initializers -Wno-unused-par
                                  -Wconversion -Wall -Werror \
                                  -DLOG_TAG=\"SDE\"
 LOCAL_SHARED_LIBRARIES        := libsde libqservice libbinder libhardware libhardware_legacy \
-                                 libutils libcutils libsync libmemalloc libqdutils
+                                 libutils libcutils libsync libqdutils
 LOCAL_SRC_FILES               := hwc_session.cpp \
                                  hwc_display.cpp \
                                  hwc_display_primary.cpp \
