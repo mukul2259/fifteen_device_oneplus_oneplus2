@@ -1,0 +1,59 @@
+cc_library_shared {
+    name: "libOmxVenc",
+    vendor: true,
+
+    srcs: [
+        "src/omx_video_base.cpp",
+        "src/omx_video_encoder.cpp",
+        "src/video_encoder_device_v4l2.cpp",
+    ],
+
+    cflags: [
+        "-Werror",
+        "-Wno-misleading-indentation",
+        "-D_ANDROID_",
+        "-D_ANDROID_ICS_",
+        "-D_MSM8974_",
+        "-DMAX_RES_1080P",
+        "-DMAX_RES_1080P_EBI",
+        "-DSUPPORT_CONFIG_INTRA_REFRESH",
+        "-DUSE_ION",
+        "-DUSE_NATIVE_HANDLE_SOURCE",
+    ] + select({
+        "soong_config_vars:target_board_platform": {
+            "msm8992": ["-DSW_VENC_HEVC"],
+        },
+        default: [],
+    }),
+
+    header_libs: [
+        "display_headers",
+        "generated_kernel_headers",
+	"libarect_headers",
+        "libc2dcolorconvert_headers",
+	"libnativebase_headers",
+	"libnativewindow_headers",
+	"libomxcommon_headers",
+	"libomxcore_headers",
+	"libstagefright_headers",
+        "libstagefrighthw_headers",
+        "media_plugin_headers",
+    ],
+
+    shared_libs: [
+        "libc2dcolorconvert",
+        "libcutils",
+        "libdl",
+        "libgui_vendor",
+        "liblog",
+        "libutils",
+    ],
+
+    static_libs: ["libOmxVidcCommon"],
+}
+
+cc_library_headers {
+    name: "libomxvenc_headers",
+    export_include_dirs: ["inc"],
+    vendor: true,
+}

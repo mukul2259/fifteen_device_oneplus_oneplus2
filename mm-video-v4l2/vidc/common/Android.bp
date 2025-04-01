@@ -1,0 +1,36 @@
+cc_library_static {
+    name: "libOmxVidcCommon",
+    vendor: true,
+
+    srcs: [
+        "src/extra_data_handler.cpp",
+        "src/vidc_color_converter.cpp",
+    ],
+
+    cflags: [
+        "-Werror",
+         "-D_ANDROID_",
+         "-D_ANDROID_ICS_",
+    ],
+
+    header_libs: [
+        "display_headers",
+        "general_kernel_headers",
+        "libc2dcolorconvert_headers",
+        "libomxcommon_headers",
+        "libomxcore_headers",
+	"libstagefright_headers",
+    ],
+
+    shared_libs: [
+        "liblog",
+        "libcutils",
+        "libdl",
+    ],
+}
+
+cc_library_headers {
+    name: "libOmxVidcCommon_headers",
+    export_include_dirs: ["inc"],
+    vendor: true,
+}

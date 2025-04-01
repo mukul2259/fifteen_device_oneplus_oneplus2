@@ -1,0 +1,109 @@
+cc_library_shared {
+    name: "libOmxVdec",
+    vendor: true,
+
+    srcs: [
+        "src/frameparser.cpp",
+        "src/h264_utils.cpp",
+        "src/hevc_utils.cpp",
+        "src/mp4_utils.cpp",
+        "src/omx_vdec_msm8974.cpp",
+        "src/ts_parser.cpp",
+    ],
+
+    cflags: [
+        "-Werror",
+        "-Wno-parentheses",
+        "-Wno-pointer-bool-conversion",
+        "-D_ANDROID_",
+        "-D_ANDROID_ICS_",
+        "-D_MSM8974_",
+        "-D_QUERY_DISP_RES_",
+        "-DADAPTIVE_PLAYBACK_SUPPORTED",
+        "-DALLOCATE_OUTPUT_NATIVEHANDLE",
+        "-DFLEXYUV_SUPPORTED",
+        "-DMAX_RES_1080P",
+        "-DMAX_RES_1080P_EBI",
+        "-DPROCESS_EXTRADATA_IN_OUTPUT_PORT",
+        "-DUSE_ION",
+    ] + select({
+        "soong_config_vars:target_board_platform": {
+            "msm8994": ["-DVENUS_HEVC"],
+        },
+        default: [],
+    }),
+
+
+     header_libs: [
+        "display_headers",
+        "generated_kernel_headers",
+        "libc2dcolorconvert_headers",
+        "libarect_headers",
+        "libnativebase_headers",
+        "libnativewindow_headers",
+	"libomxcommon_headers",
+	"libomxcore_headers",
+	"libstagefright_headers",
+        "media_plugin_headers",
+    ],
+
+    shared_libs: [
+        "liblog",
+        "libutils",
+        "libui",
+        "libcutils",
+        "libdl",
+        "libqdMetaData",
+    ],
+
+    static_libs: ["libOmxVidcCommon"],
+}
+
+cc_library_headers {
+    name: "libomxvdec_headers",
+    export_include_dirs: ["inc"],
+    vendor: true,
+}
+
+cc_library_shared {
+    name: "libOmxVdecHevc",
+    vendor: true,
+
+    srcs: [
+        "src/frameparser.cpp",
+        "src/h264_utils.cpp",
+        "src/hevc_utils.cpp",
+        "src/mp4_utils.cpp",
+        "src/ts_parser.cpp",
+    ],
+
+    cflags: [
+        "-Wno-parentheses",
+        "-D_ANDROID_",
+        "-D_ANDROID_ICS_",
+        "-D_MSM8974_",
+        "-D_QUERY_DISP_RES_",
+        "-DUSE_ION",
+    ] + select({
+        "soong_config_vars:target_board_platform": {
+            "msm8994": ["-DVENUS_HEVC"],
+        },
+        default: [],
+    }),
+
+    header_libs: [
+       "libc2dcolorconvert_headers",
+       "libarect_headers",
+       "libnativebase_headers",
+       "libnativewindow_headers",
+       "libomxcommon_headers",
+       "libomxcore_headers",
+       "media_plugin_headers",
+   ],
+}
+
+cc_library_headers {
+    name: "libOmxVdecHevc_headers",
+    export_include_dirs: ["inc"],
+    vendor: true,
+}
