@@ -1,0 +1,28 @@
+cc_library_shared {
+    name: "libstagefrighthw",
+    vendor: true,
+
+    srcs: ["QComOMXPlugin.cpp"],
+
+    include_dirs: [
+        "frameworks/native/include/media/openmax",
+        "frameworks/native/include/media/hardware",
+    ],
+
+    header_libs: [
+        "libstagefright_headers",
+        "media_plugin_headers",
+    ],
+
+    shared_libs: [
+        "libutils",
+        "libcutils",
+        "libdl",
+    ],
+}
+
+cc_library_headers {
+    name: "libstagefrighthw_headers",
+    export_include_dirs: ["."],
+    vendor: true,
+}
