@@ -26,31 +26,13 @@ libmm-vdec-def += -DPROCESS_EXTRADATA_IN_OUTPUT_PORT
 libmm-vdec-def += -DMAX_RES_1080P
 libmm-vdec-def += -DMAX_RES_1080P_EBI
 
-TARGETS_THAT_USE_HEVC_ADSP_HEAP := msm8226 msm8974
-TARGETS_THAT_HAVE_VENUS_HEVC := apq8084 msm8994
-TARGETS_THAT_NEED_HEVC_LIB := msm8974 msm8610 msm8226 msm8916
-TARGETS_THAT_NEED_SW_HEVC := msm8974 msm8226 msm8916
-
-ifeq ($(call is-board-platform-in-list, $(TARGETS_THAT_USE_HEVC_ADSP_HEAP)),true)
-libmm-vdec-def += -D_HEVC_USE_ADSP_HEAP_
-endif
+TARGETS_THAT_HAVE_VENUS_HEVC := msm8994
 
 ifeq ($(call is-board-platform-in-list, $(TARGETS_THAT_HAVE_VENUS_HEVC)),true)
 libmm-vdec-def += -DVENUS_HEVC
 endif
 
-ifeq ($(TARGET_BOARD_PLATFORM),msm8610)
-libmm-vdec-def += -DSMOOTH_STREAMING_DISABLED
-libmm-vdec-def += -DH264_PROFILE_LEVEL_CHECK
-endif
-
-ifeq ($(TARGET_USES_ION),true)
 libmm-vdec-def += -DUSE_ION
-endif
-
-ifneq (1,$(filter 1,$(shell echo "$$(( $(PLATFORM_SDK_VERSION) >= 18 ))" )))
-libmm-vdec-def += -DANDROID_JELLYBEAN_MR1=1
-endif
 
 include $(CLEAR_VARS)
 
@@ -66,12 +48,6 @@ libmm-vdec-inc          += $(TOP)/frameworks/native/libs/arect/include
 libmm-vdec-inc          += $(TOP)/frameworks/native/libs/nativebase/include
 libmm-vdec-inc      	+= $(call project-path-for,qcom-media)/libc2dcolorconvert
 libmm-vdec-inc      	+= $(TOP)/frameworks/av/include/media/stagefright
-libmm-vdec-inc      	+= $(TARGET_OUT_HEADERS)/mm-video/SwVdec
-
-ifeq ($(PLATFORM_SDK_VERSION), 18)  #JB_MR2
-libmm-vdec-def += -DANDROID_JELLYBEAN_MR2=1
-libmm-vdec-inc += $(call project-path-for,qcom-media)/libstagefrighthw
-endif
 
 ifeq ($(call is-platform-sdk-version-at-least, 19),true)
 # This feature is enabled for Android KK+
@@ -83,9 +59,7 @@ ifeq ($(call is-platform-sdk-version-at-least, 22),true)
 libmm-vdec-def += -DFLEXYUV_SUPPORTED
 endif
 
-ifeq ($(TARGET_USES_MEDIA_EXTENSIONS),true)
 libmm-vdec-def += -DALLOCATE_OUTPUT_NATIVEHANDLE
-endif
 
 # ---------------------------------------------------------------------------------
 # 			Make the Shared library (libOmxVdec)
