@@ -4,7 +4,7 @@ display_top := $(call my-dir)
 common_libs := liblog libutils libcutils libhardware libEGL
 
 #Common C flags
-common_flags := -DDEBUG_CALC_FPS -Wno-missing-field-initializers
+common_flags := -Wno-missing-field-initializers
 common_flags += -Wconversion -Wall -Werror -Wno-sign-conversion
 common_flags += -DVENUS_COLOR_FORMAT
 common_flags += -DMDSS_TARGET
