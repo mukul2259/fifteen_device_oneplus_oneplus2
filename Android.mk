@@ -2,7 +2,7 @@ ifeq ($(call my-dir),$(call project-path-for,qcom-display))
 
 TARGET_USES_SDE = false
 
-display-hals := libgralloc libmemtrack libqservice libqdutils \
+display-hals := libgralloc libqservice libqdutils \
 		libgenlock libhwcomposer libhdmi
 
 ifeq ($(call is-vendor-board-platform,QCOM),true)
