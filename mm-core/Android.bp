@@ -21,6 +21,10 @@ cc_library_shared {
         "src/common",
     ],
 
+    header_libs: [
+        "libomxcore_headers",
+    ],
+
     export_header_lib_headers: [
         "libomxcore_headers",
     ],
@@ -51,7 +55,10 @@ cc_library_shared {
 
     local_include_dirs: [
         "src/common",
-        "inc",
+    ],
+
+    header_libs: [
+        "libomxcore_headers",
     ],
 
     export_header_lib_headers: [
