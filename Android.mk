@@ -3,7 +3,7 @@ ifeq ($(call my-dir),$(call project-path-for,qcom-display))
 TARGET_USES_SDE = false
 
 display-hals := libgralloc libcopybit libmemtrack libqservice libqdutils \
-		libgenlock libhwcomposer liboverlay libhdmi
+		libgenlock libhwcomposer libhdmi
 
 ifeq ($(call is-vendor-board-platform,QCOM),true)
     include $(call all-named-subdir-makefiles,$(display-hals))
@@ -20,7 +20,6 @@ LOCAL_EXPORT_C_INCLUDE_DIRS := \
     $(display_top)/libexternal \
     $(display_top)/libhdmi \
     $(display_top)/libhwcomposer \
-    $(display_top)/liboverlay \
     $(display_top)/libqdutils \
     $(display_top)/libqservice \
     $(display_top)/libvirtual
