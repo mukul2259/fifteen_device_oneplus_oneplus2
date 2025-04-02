@@ -2,7 +2,7 @@ ifeq ($(call my-dir),$(call project-path-for,qcom-display))
 
 TARGET_USES_SDE = false
 
-display-hals := libgralloc libcopybit libmemtrack libqservice libqdutils \
+display-hals := libgralloc libmemtrack libqservice libqdutils \
 		libgenlock libhwcomposer libhdmi
 
 ifeq ($(call is-vendor-board-platform,QCOM),true)
@@ -16,7 +16,6 @@ endif
 include $(CLEAR_VARS)
 LOCAL_MODULE := display_headers
 LOCAL_EXPORT_C_INCLUDE_DIRS := \
-    $(display_top)/libcopybit \
     $(display_top)/libexternal \
     $(display_top)/libhdmi \
     $(display_top)/libhwcomposer \
