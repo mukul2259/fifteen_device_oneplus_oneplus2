@@ -6,6 +6,8 @@ common_libs := liblog libutils libcutils libhardware libEGL
 #Common C flags
 common_flags := -DDEBUG_CALC_FPS -Wno-missing-field-initializers
 common_flags += -Wconversion -Wall -Werror -Wno-sign-conversion
+common_flags += -DVENUS_COLOR_FORMAT
+common_flags += -DMDSS_TARGET
 
 ifeq ($(TARGET_USES_POST_PROCESSING),true)
     common_flags     += -DUSES_POST_PROCESSING
@@ -14,12 +16,6 @@ endif
 
 ifeq ($(ARCH_ARM_HAVE_NEON),true)
     common_flags += -D__ARM_HAVE_NEON
-endif
-
-ifeq ($(call is-board-platform-in-list, msm8974 msm8226 msm8610 apq8084 \
-        mpq8092 msm_bronze msm8916 msm8994 msm8992), true)
-    common_flags += -DVENUS_COLOR_FORMAT
-    common_flags += -DMDSS_TARGET
 endif
 
 ifeq ($(DISPLAY_DEBUG_SWAPINTERVAL),true)
