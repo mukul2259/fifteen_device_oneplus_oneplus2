@@ -26,10 +26,8 @@ cc_library_shared {
         "-DMAX_RES_1080P_EBI",
         "-DPROCESS_EXTRADATA_IN_OUTPUT_PORT",
         "-DUSE_ION",
-    ] + select({
-        "soong_config_vars:target_board_platform": {
+    ] + select(soong_config_variable("ANDROID", "target_board_platform"), {
             "msm8994": ["-DVENUS_HEVC"],
-        },
         default: [],
     }),
 
@@ -84,10 +82,8 @@ cc_library_shared {
         "-D_MSM8974_",
         "-D_QUERY_DISP_RES_",
         "-DUSE_ION",
-    ] + select({
-        "soong_config_vars:target_board_platform": {
+    ] + select(soong_config_variable("ANDROID", "target_board_platform"), {
             "msm8994": ["-DVENUS_HEVC"],
-        },
         default: [],
     }),
 

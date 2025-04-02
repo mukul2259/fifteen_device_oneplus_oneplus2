@@ -19,10 +19,8 @@ cc_library_shared {
         "-DSUPPORT_CONFIG_INTRA_REFRESH",
         "-DUSE_ION",
         "-DUSE_NATIVE_HANDLE_SOURCE",
-    ] + select({
-        "soong_config_vars:target_board_platform": {
+    ] + select(soong_config_variable("ANDROID", "target_board_platform"), {
             "msm8992": ["-DSW_VENC_HEVC"],
-        },
         default: [],
     }),
 
