@@ -1,0 +1,55 @@
+cc_library_shared {
+    name: "hwcomposer.qcom",
+    vendor: true,
+    relative_install_path: "hw",
+    
+    header_libs: [
+        "display_headers",
+        "generated_kernel_headers",
+    ],
+
+    shared_libs: [
+        "liblog",
+        "libutils",
+        "libcutils",
+        "libhardware",
+        "libEGL",
+        "libhdmi",
+        "libqdutils",
+        "libhardware_legacy",
+        "libmemalloc",
+        "libqservice",
+        "libdl",
+        "libsync",
+        "libbinder",
+        "libui.vendor",
+    ],
+
+    cflags: [
+        "-Wno-missing-field-initializers",
+        "-Wconversion", 
+        "-Wall",
+        "-Werror",
+        "-Wno-sign-conversion",
+        "-DVENUS_COLOR_FORMAT",
+        "-DMDSS_TARGET",
+        "-DLOG_TAG=\"qdhwcomposer\"",
+        "-Wno-absolute-value",
+        "-Wno-float-conversion",
+        "-Wno-unused-parameter",
+    ],
+
+    srcs: [
+        "hwc.cpp",
+        "hwc_utils.cpp",
+        "hwc_uevents.cpp",
+        "hwc_vsync.cpp",
+        "hwc_fbupdate.cpp",
+        "hwc_mdpcomp.cpp",
+        "hwc_copybit.cpp",
+        "hwc_qclient.cpp",
+        "hwc_dump_layers.cpp",
+        "hwc_ad.cpp",
+        "hwc_virtual.cpp",
+    ],
+}

@@ -1,0 +1,35 @@
+cc_library_shared {
+    name: "libqservice",
+    vendor: true,
+
+    header_libs: [
+        "display_headers",
+        "generated_kernel_headers",
+    ],
+
+    shared_libs: [
+        "liblog",
+        "libutils",
+        "libcutils",
+        "libhardware",
+        "libEGL",
+        "libbinder",
+    ],
+
+    cflags: [
+        "-Wno-missing-field-initializers",
+        "-Wconversion",
+        "-Wall",
+        "-Werror",
+        "-Wno-sign-conversion",
+        "-DVENUS_COLOR_FORMAT",
+        "-DMDSS_TARGET",
+        "-DLOG_TAG=\"qdqservice\"",
+    ],
+
+    srcs: [
+        "QService.cpp",
+        "IQService.cpp",
+        "IQClient.cpp",
+    ],
+}

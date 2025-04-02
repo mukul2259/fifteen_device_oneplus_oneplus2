@@ -1,0 +1,32 @@
+cc_library_shared {
+    name: "libvirtual",
+    vendor: true,
+
+    header_libs: [
+        "display_headers",
+        "generated_kernel_headers",
+    ],
+
+    shared_libs: [
+        "liblog",
+        "libutils",
+        "libcutils",
+        "libhardware",
+        "libEGL",
+        "libqdutils",
+        "libmedia",
+    ],
+
+    cflags: [
+        "-Wno-missing-field-initializers",
+        "-Wconversion",
+        "-Wall",
+        "-Werror",
+        "-Wno-sign-conversion",
+        "-DVENUS_COLOR_FORMAT",
+        "-DMDSS_TARGET",
+        "-DLOG_TAG=\"qdvirtual\"",
+    ],
+
+    srcs: ["virtual.cpp"],
+}
