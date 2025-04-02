@@ -18,7 +18,6 @@ LOCAL_MODULE := display_headers
 LOCAL_EXPORT_C_INCLUDE_DIRS := \
     $(display_top)/libcopybit \
     $(display_top)/libexternal \
-    $(display_top)/libgralloc \
     $(display_top)/libhdmi \
     $(display_top)/libhwcomposer \
     $(display_top)/liboverlay \
