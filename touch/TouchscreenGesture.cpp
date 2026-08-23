@@ -1,17 +1,6 @@
 /*
- * Copyright (C) 2019, 2022 The LineageOS Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * SPDX-FileCopyrightText: 2026 The LineageOS Project
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 #define LOG_TAG "TouchscreenGestureService"
@@ -21,11 +10,10 @@
 
 #include "TouchscreenGesture.h"
 
+namespace aidl {
 namespace vendor {
 namespace lineage {
 namespace touch {
-namespace V1_0 {
-namespace implementation {
 
 const std::map<int32_t, TouchscreenGesture::GestureInfo> TouchscreenGesture::kGestureInfoMap = {
 	{0, {250, "down arrow", "/proc/touchpanel/draw_v"}},
@@ -40,34 +28,35 @@ const std::map<int32_t, TouchscreenGesture::GestureInfo> TouchscreenGesture::kGe
         {9, {259, "one finger up swipe", "/proc/touchpanel/up_swipe"}},
 };
 
-// Methods from ::vendor::lineage::touch::V1_0::ITouchscreenGesture follow.
-Return<void> TouchscreenGesture::getSupportedGestures(getSupportedGestures_cb resultCb) {
-    std::vector<Gesture> gestures;
-
+::ndk::ScopedAStatus TouchscreenGesture::getSupportedGestures(
+        std::vector<Gesture>* _aidl_return) {
     for (const auto& entry : kGestureInfoMap) {
-        gestures.push_back({entry.first, entry.second.name, entry.second.keycode});
+        Gesture gesture;
+        gesture.id = entry.first;
+        gesture.name = entry.second.name;
+        gesture.keycode = entry.second.keycode;
+        _aidl_return->push_back(gesture);
     }
-    resultCb(gestures);
 
-    return Void();
+    return ::ndk::ScopedAStatus::ok();
 }
 
-Return<bool> TouchscreenGesture::setGestureEnabled(const Gesture& gesture, bool enabled) {
+::ndk::ScopedAStatus TouchscreenGesture::setGestureEnabled(const Gesture& gesture,
+                                                          bool enabled) {
     const auto entry = kGestureInfoMap.find(gesture.id);
     if (entry == kGestureInfoMap.end()) {
-        return false;
+        return ::ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
     }
 
     if (!android::base::WriteStringToFile(std::to_string(enabled), entry->second.path)) {
         LOG(ERROR) << "Failed to write " << entry->second.path;
-        return false;
+        return ::ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
     }
 
-    return true;
+    return ::ndk::ScopedAStatus::ok();
 }
 
-}  // namespace implementation
-}  // namespace V1_0
 }  // namespace touch
 }  // namespace lineage
 }  // namespace vendor
+}  // namespace aidl
