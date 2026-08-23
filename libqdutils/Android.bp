@@ -5,8 +5,13 @@ cc_library_shared {
     shared_libs: [
         "libbinder",
         "libqservice",
+        "libui",
     ],
     header_libs: [
+        "libarect_headers",
+        "libsystem_headers",
+        "libui_headers",
+        "libutils_headers",
         "qti_kernel_headers",
     ],
     export_header_lib_headers: [
