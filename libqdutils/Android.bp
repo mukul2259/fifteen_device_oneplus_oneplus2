@@ -6,6 +6,12 @@ cc_library_shared {
         "libbinder",
         "libqservice",
     ],
+    header_libs: [
+        "qti_kernel_headers",
+    ],
+    export_header_lib_headers: [
+        "qti_kernel_headers",
+    ],
     cflags: [
         "-DLOG_TAG=\"qdutils\"",
         "-Wno-sign-conversion",
