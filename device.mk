@@ -313,7 +313,7 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    libaudioclient_shim \
+    libaudioclient_shim.oneplus2 \
     librmnetctl \
     libxml2 \
     rild_socket
