@@ -27,6 +27,15 @@ cc_library_headers {
     ],
 }
 
+cc_library_headers {
+    name: "display_intf_headers",
+    vendor_available: true,
+    export_include_dirs: [
+        "libqdutils",
+        "libgralloc",
+    ],
+}
+
 subdirs = [
     "libqservice",
     "libqdutils",
