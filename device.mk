@@ -24,7 +24,6 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_SOONG_NAMESPACES += \
     device/oneplus/oneplus2 \
     hardware/oneplus \
-    hardware/qcom-caf/bt/libbt-vendor
 
 # Permissions
 PRODUCT_COPY_FILES += \
