@@ -147,15 +147,11 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.mapper@2.0-impl-2.1 \
     android.hardware.memtrack@1.0-impl \
-    android.hardware.memtrack@1.0-service
+    android.hardware.memtrack@1.0-service \
+    copybit.qcom \
+    gralloc.qcom \
+    hwcomposer.qcom
 
-PRODUCT_PACKAGES += \
-    copybit.msm8994 \
-    gralloc.msm8994 \
-    hwcomposer.msm8994 \
-    memtrack.msm8994 \
-    liboverlay \
-    libtinyxml
 
 # Doze mode
 PRODUCT_PACKAGES += \
