@@ -166,6 +166,10 @@ TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap"
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
+# Non-A/B OTAs must stay uncompressed for legacy recoveries
+# (brotli system.new.dat.br is not understood by older TWRPs)
+BOARD_NON_AB_OTA_DISABLE_COMPRESSION := true
+
 # Releasetools
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_oneplus2
 TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)
