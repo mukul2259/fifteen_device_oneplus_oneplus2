@@ -1,3 +1,9 @@
+cc_library_headers {
+    name: "libcopybit_headers",
+    vendor_available: true,
+    export_include_dirs: ["."],
+}
+
 cc_library_shared {
     name: "copybit.qcom",
     vendor: true,

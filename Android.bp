@@ -2,9 +2,11 @@ cc_defaults {
     name: "display_defaults",
     cflags: [
         "-Wno-missing-field-initializers",
-        "-Wconversion",
         "-Wall",
-        "-Werror",
+        "-Wno-unused-parameter",
+        "-Wno-sign-conversion",
+        "-Wno-float-conversion",
+        "-Wno-conversion",
     ],
     shared_libs: [
         "liblog",

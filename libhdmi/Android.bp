@@ -7,5 +7,8 @@ cc_library_shared {
         "-Wno-float-conversion",
     ],
     srcs: ["hdmi.cpp"],
-    shared_libs: ["libqdutils"],
+    shared_libs: [
+        "libqdutils",
+        "liboverlay",
+    ],
 }
