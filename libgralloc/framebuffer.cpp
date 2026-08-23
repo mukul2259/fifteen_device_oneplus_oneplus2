@@ -315,7 +315,6 @@ int mapFrameBufferLocked(framebuffer_device_t *dev)
     module->fps = fps;
     module->swapInterval = 1;
 
-    CALC_INIT();
 
     /*
      * map the framebuffer

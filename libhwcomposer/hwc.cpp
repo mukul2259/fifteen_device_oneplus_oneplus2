@@ -806,9 +806,6 @@ static int hwc_set(hwc_composer_device_1 *dev,
                 ret = -EINVAL;
         }
     }
-    // This is only indicative of how many times SurfaceFlinger posts
-    // frames to the display.
-    CALC_FPS();
     MDPComp::resetIdleFallBack();
     ctx->mVideoTransFlag = false;
     //Was locked at the beginning of prepare
