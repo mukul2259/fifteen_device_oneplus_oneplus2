@@ -1,0 +1,44 @@
+cc_library_shared {
+    name: "gralloc.qcom",
+    vendor: true,
+    defaults: ["display_defaults"],
+    relative_install_path: "hw",
+    cflags: ["-DLOG_TAG=\"qdgralloc\""],
+    srcs: [
+        "gpu.cpp",
+        "gralloc.cpp",
+        "framebuffer.cpp",
+        "mapper.cpp",
+    ],
+    shared_libs: [
+        "libmemalloc",
+        "libqdMetaData",
+        "libhardware",
+        "libqdutils",
+        "libGLESv1_CM",
+    ],
+    header_libs: [
+        "generated_kernel_headers",
+        "libhardware_headers",
+    ],
+}
+
+cc_library_shared {
+    name: "libmemalloc",
+    vendor: true,
+    defaults: ["display_defaults"],
+    cflags: ["-DLOG_TAG=\"qdmemalloc\""],
+    srcs: [
+        "ionalloc.cpp",
+        "alloc_controller.cpp",
+    ],
+    shared_libs: [
+        "libqdutils",
+        "libdl",
+        "libhardware",
+    ],
+    header_libs: [
+        "generated_kernel_headers",
+        "libhardware_headers",
+    ],
+}

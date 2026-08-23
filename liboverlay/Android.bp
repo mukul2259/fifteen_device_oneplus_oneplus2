@@ -1,0 +1,27 @@
+cc_library_shared {
+    name: "liboverlay",
+    vendor: true,
+    defaults: ["display_defaults"],
+    cflags: [
+        "-DLOG_TAG=\"qdoverlay\"",
+        "-Wno-sign-conversion",
+    ],
+    srcs: [
+        "overlay.cpp",
+        "overlayUtils.cpp",
+        "overlayMdp.cpp",
+        "overlayRotator.cpp",
+        "overlayMdpRot.cpp",
+        "overlayMdssRot.cpp",
+        "overlayWriteback.cpp",
+        "overlayCursor.cpp",
+        "pipes/overlayGenPipe.cpp",
+    ],
+    shared_libs: [
+        "libqdutils",
+        "libmemalloc",
+        "libsync",
+        "libdl",
+    ],
+    header_libs: ["generated_kernel_headers"],
+}
