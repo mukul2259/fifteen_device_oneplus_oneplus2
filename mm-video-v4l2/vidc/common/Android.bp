@@ -15,7 +15,7 @@ cc_library_static {
 
     header_libs: [
         "display_headers",
-        "general_kernel_headers",
+        "qti_kernel_headers",
         "libc2dcolorconvert_headers",
         "libomxcommon_headers",
         "libomxcore_headers",
@@ -31,6 +31,12 @@ cc_library_static {
 
 cc_library_headers {
     name: "libOmxVidcCommon_headers",
+    export_include_dirs: ["inc"],
+    vendor: true,
+}
+
+cc_library_headers {
+    name: "libomxcommon_headers",
     export_include_dirs: ["inc"],
     vendor: true,
 }
