@@ -1,0 +1,5 @@
+# The lineage qcom sepolicy fragments reference the Soter HAL client
+# domains unconditionally; msm8994 has no soter HAL, so declare the
+# attributes empty to satisfy the compiler.
+attribute vendor_hal_soter;
+attribute vendor_hal_soter_client;
