@@ -235,6 +235,7 @@ LOCAL_SHARED_LIBRARIES := \
 	libprocessgroup
 
 LOCAL_C_INCLUDES += \
+	$(TARGET_DEVICE_DIR)/include \
 	external/tinyalsa/include \
 	external/tinycompress/include \
 	external/expat/lib \
