@@ -102,6 +102,11 @@ QCOM_BT_USE_BTNV := true
 TARGET_BOARD_INFO_FILE ?= $(PLATFORM_PATH)/board-info.txt
 
 # Camera
+# The OSS camera HAL was kanged without its full mm-camera header stack;
+# VANILLA_HAL skips the extensions (longshot, frame-fd passing) whose
+# protocol constants are not vendored.
+TARGET_USES_AOSP ?= true
+TARGET_USES_MEDIA_EXTENSIONS ?= true
 MALLOC_SVELTE_FOR_LIBC32 := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /system/vendor/bin/mm-qcamera-daemon=22

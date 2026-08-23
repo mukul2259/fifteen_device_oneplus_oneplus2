@@ -33,6 +33,8 @@ LOCAL_SRC_FILES += \
     HAL/QCameraThermalAdapter.cpp
 
 LOCAL_CFLAGS := -Wall -Wextra -Werror
+# VANILLA_HAL compiles out some consumers, leaving set-but-unused locals
+LOCAL_CFLAGS += -Wno-error=unused-but-set-variable -Wno-unused-variable -Wno-unused-parameter
 LOCAL_CFLAGS += -DHAS_MULTIMEDIA_HINTS
 
 ifeq ($(TARGET_USES_AOSP),true)
