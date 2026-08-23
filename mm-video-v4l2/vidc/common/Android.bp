@@ -15,6 +15,7 @@ cc_library_static {
 
     header_libs: [
         "display_headers",
+        "libutils_headers",
         "qti_kernel_headers",
         "libc2dcolorconvert_headers",
         "libomxcommon_headers",

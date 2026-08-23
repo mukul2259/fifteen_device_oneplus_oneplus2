@@ -2,6 +2,11 @@ cc_library_shared {
     name: "libOmxVdec",
     vendor: true,
 
+    local_include_dirs: [
+        "inc",
+        "src",
+    ],
+
     srcs: [
         "src/frameparser.cpp",
         "src/h264_utils.cpp",
