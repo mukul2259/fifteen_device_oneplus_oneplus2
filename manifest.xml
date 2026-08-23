@@ -185,12 +185,4 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="aidl">
-        <name>vendor.lineage.livedisplay</name>
-        <version>1</version>
-        <interface>
-            <name>ILiveDisplayService</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
 </manifest>
