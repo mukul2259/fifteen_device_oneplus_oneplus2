@@ -1,0 +1,22 @@
+cc_library_shared {
+    name: "copybit.qcom",
+    vendor: true,
+    defaults: ["display_defaults"],
+    relative_install_path: "hw",
+    cflags: [
+        "-DLOG_TAG=\"qdcopybit\"",
+        "-DCOPYBIT_Z180=1",
+        "-DC2D_SUPPORT_DISPLAY=1",
+    ],
+    srcs: [
+        "copybit_c2d.cpp",
+        "software_converter.cpp",
+    ],
+    shared_libs: [
+        "libhardware",
+        "libEGL",
+        "libdl",
+        "libmemalloc",
+    ],
+    header_libs: ["generated_kernel_headers"],
+}
