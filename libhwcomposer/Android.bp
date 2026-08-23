@@ -34,7 +34,7 @@ cc_library_shared {
         "libqservice",
         "libsync",
         "libbinder",
-        "libui.vendor",
+        "libui",
     ],
     header_libs: ["generated_kernel_headers"],
 }
